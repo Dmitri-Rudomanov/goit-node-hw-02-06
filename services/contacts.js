@@ -2,12 +2,12 @@ const { contactsFunctions } = require("./../functions");
 
 class ContactServices {
   constructor() {
-    this.repositories = { contacts: contactsFunctions };
+    this.item = { contacts: contactsFunctions };
   }
 
   async listContacts() {
     try {
-      const data = await this.repositories.contacts.listContacts();
+      const data = await this.item.contacts.listContacts();
       return data;
     } catch (error) {
       console.error(error);
@@ -17,7 +17,7 @@ class ContactServices {
 
   async getContactById(contactId) {
     try {
-      const data = await this.repositories.contacts.getContactById(contactId);
+      const data = await this.item.contacts.getContactById(contactId);
       return data;
     } catch (error) {
       console.error(error);
@@ -27,7 +27,7 @@ class ContactServices {
 
   async removeContact(contactId) {
     try {
-      const data = await this.repositories.contacts.removeContact(contactId);
+      const data = await this.item.contacts.removeContact(contactId);
       return data;
     } catch (error) {
       console.error(error);
@@ -37,7 +37,7 @@ class ContactServices {
 
   async addContact(body) {
     try {
-      const data = await this.repositories.contacts.addContact(body);
+      const data = await this.item.contacts.addContact(body);
       return data;
     } catch (error) {
       console.error(error);
@@ -47,10 +47,7 @@ class ContactServices {
 
   async updateContact(contactId, body) {
     try {
-      const data = await this.repositories.contacts.updateContact(
-        contactId,
-        body
-      );
+      const data = await this.item.contacts.updateContact(contactId, body);
       return data;
     } catch (error) {
       console.error(error);

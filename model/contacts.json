@@ -58,5 +58,17 @@
         "name": "Dmitrij Rudomanov",
         "email": "dmitrij@gmail.com",
         "phone": "(000) 206-2688"
+    },
+    {
+        "id": 12,
+        "name": "Retro Frag",
+        "email": "dui.in@gmail.com",
+        "phone": "(123) 840-6685"
+    },
+    {
+        "id": 13,
+        "name": "Modern Frag",
+        "email": "dui.in@gmail.com",
+        "phone": "(222) 840-6685"
     }
 ]
