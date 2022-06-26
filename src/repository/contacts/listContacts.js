@@ -1,8 +1,9 @@
-const readBeautifyFile = require('./readBeautifyFile')
+const model = require('../../schemas/contacts')
 
 const listContacts = async () => {
   try {
-    return await readBeautifyFile()
+    const data = await model.find()
+    return data
   } catch (error) {
     console.error(error)
     throw error

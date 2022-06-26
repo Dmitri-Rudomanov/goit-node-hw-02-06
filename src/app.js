@@ -1,8 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
-// GCZm1okEyX0R2fYf
-// mongodb+srv://Dmitrij:GCZm1okEyX0R2fYf@cluster0.3v2jh60.mongodb.net/test
+
 const { HTTP_CODES, STATUS } = require("./codes/constants.js");
 
 const { contactsRouter } = require("./routes");

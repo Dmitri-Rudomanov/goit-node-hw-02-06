@@ -1,4 +1,4 @@
-const { contactsFunctions } = require("./../functions");
+const { contactsFunctions } = require("../repository");
 
 class ContactServices {
   constructor() {
@@ -52,6 +52,19 @@ class ContactServices {
     } catch (error) {
       console.error(error);
       throw error;
+    }
+  }
+
+    async updateContactsStatus(contactId, { favorite }) {
+    try {
+      const data = await this.item.contacts.updateContactsStatus(
+        contactId,
+        { favorite },
+      )
+      return data
+    } catch (error) {
+      console.error(error)
+      throw error
     }
   }
 }

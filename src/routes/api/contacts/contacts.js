@@ -5,6 +5,7 @@ const { contactsController } = require("../../../controller");
 const {
   validationAddContact,
   validationUpdateContact,
+   validationUpdateContactsStatus,
 } = require("./validate.js");
 
 router
@@ -12,6 +13,7 @@ router
   .get("/:contactId", contactsController.getById)
   .post("/", validationAddContact, contactsController.add)
   .delete("/:contactId", contactsController.remove)
-  .put("/:contactId", validationUpdateContact, contactsController.update);
+  .put("/:contactId", validationUpdateContact, contactsController.update)
+  .patch('/:contactId/favorite',validationUpdateContactsStatus,contactsController.updateStatus)
 
 module.exports = router;
