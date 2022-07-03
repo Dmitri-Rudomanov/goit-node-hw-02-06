@@ -1,63 +1,79 @@
-const { contactsFunctions } = require("../repository");
+const { contactsRepository } = require('../repositories')
 
 class ContactServices {
   constructor() {
-    this.item = { contacts: contactsFunctions };
+    this.repositories = { contacts: contactsRepository }
   }
 
-  async listContacts() {
+  async listContacts(userId, query) {
     try {
-      const data = await this.item.contacts.listContacts();
-      return data;
+      const {
+        docs: contacts,
+        totalDocs: total,
+        limit,
+        offset,
+      } = await this.repositories.contacts.listContacts(userId, query)
+      return { contacts, total, limit, offset }
     } catch (error) {
-      console.error(error);
-      throw error;
+      console.error(error)
+      throw error
     }
   }
 
-  async getContactById(contactId) {
+  async getContactById(userId, contactId) {
     try {
-      const data = await this.item.contacts.getContactById(contactId);
-      return data;
+      const data = await this.repositories.contacts.getContactById(
+        userId,
+        contactId,
+      )
+      return data
     } catch (error) {
-      console.error(error);
-      throw error;
+      console.error(error)
+      throw error
     }
   }
 
-  async removeContact(contactId) {
+  async removeContact(userId, contactId) {
     try {
-      const data = await this.item.contacts.removeContact(contactId);
-      return data;
+      const data = await this.repositories.contacts.removeContact(
+        userId,
+        contactId,
+      )
+      return data
     } catch (error) {
-      console.error(error);
-      throw error;
+      console.error(error)
+      throw error
     }
   }
 
-  async addContact(body) {
+  async addContact(userId, body) {
     try {
-      const data = await this.item.contacts.addContact(body);
-      return data;
+      const data = await this.repositories.contacts.addContact(userId, body)
+      return data
     } catch (error) {
-      console.error(error);
-      throw error;
+      console.error(error)
+      throw error
     }
   }
 
-  async updateContact(contactId, body) {
+  async updateContact(userId, contactId, body) {
     try {
-      const data = await this.item.contacts.updateContact(contactId, body);
-      return data;
+      const data = await this.repositories.contacts.updateContact(
+        userId,
+        contactId,
+        body,
+      )
+      return data
     } catch (error) {
-      console.error(error);
-      throw error;
+      console.error(error)
+      throw error
     }
   }
 
-    async updateContactsStatus(contactId, { favorite }) {
+  async updateContactsStatus(userId, contactId, { favorite }) {
     try {
-      const data = await this.item.contacts.updateContactsStatus(
+      const data = await this.repositories.contacts.updateContactsStatus(
+        userId,
         contactId,
         { favorite },
       )
@@ -69,4 +85,4 @@ class ContactServices {
   }
 }
 
-module.exports = { ContactServices };
+module.exports = { ContactServices }

@@ -1,3 +1,4 @@
-const contactsRouter = require("./api/contacts/contacts.js");
+const contactsRouter = require('./api/contacts/index.js')
+const usersRouter = require('./api/users/index.js')
 
-module.exports = { contactsRouter };
+module.exports = { contactsRouter, usersRouter }

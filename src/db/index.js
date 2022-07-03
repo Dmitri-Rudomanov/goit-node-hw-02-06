@@ -1,16 +1,17 @@
 const mongoose = require('mongoose')
 
 require('dotenv').config()
-
-const uriDb=process.env.DB_HOST
+const uriDb = process.env.DB_HOST
 
 const db = mongoose.connect(uriDb, {
-useUnifiedTopology: true,
+  useUnifiedTopology: true,
   useNewUrlParser: true,
 })
+
 mongoose.connection.on('connected', _ => {
-    console.info('Database connection successful.')
+  console.info('Database connection successful.')
 })
+
 mongoose.connection.on('error', error => {
   console.info(`Database connection error: ${error.message}.`)
 })

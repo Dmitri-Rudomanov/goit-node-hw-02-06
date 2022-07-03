@@ -11,5 +11,5 @@ module.exports = {
   removeContact,
   addContact,
   updateContact,
-  updateContactsStatus
+  updateContactsStatus,
 }

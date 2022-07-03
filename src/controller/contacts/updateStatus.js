@@ -1,6 +1,6 @@
-const { HTTP_CODES, STATUS } = require('../../codes/constants')
+const { HTTP_CODES, STATUS } = require('../../helpers/constants.js')
 
-const contactServices = require('../../services')
+const { contactServices } = require('../../services')
 
 const updateStatus = async (req, res, next) => {
   try {
@@ -8,6 +8,7 @@ const updateStatus = async (req, res, next) => {
       params: { contactId },
       body,
     } = req
+    const userId = req.user.id
     if (body.favorite === undefined) {
       return next({
         status: HTTP_CODES.BAD_REQUEST,
@@ -15,7 +16,11 @@ const updateStatus = async (req, res, next) => {
         message: 'missing field favorite',
       })
     }
-    const data = await contactServices.updateContactsStatus(contactId, body)
+    const data = await contactServices.updateContactsStatus(
+      userId,
+      contactId,
+      body,
+    )
     data
       ? res.status(HTTP_CODES.OK).json({
         status: STATUS.SUCCESS,

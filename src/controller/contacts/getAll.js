@@ -1,18 +1,19 @@
-const { HTTP_CODES, STATUS } = require("../../codes/constants.js");
+const { HTTP_CODES, STATUS } = require('../../helpers/constants.js')
 
-const contactServices = require("../../services");
+const { contactServices } = require('../../services')
 
 const getAll = async (req, res, next) => {
   try {
-    const data = await contactServices.listContacts();
+    const userId = req.user.id
+    const data = await contactServices.listContacts(userId, req.query)
     res.status(HTTP_CODES.OK).json({
       status: STATUS.SUCCESS,
       code: HTTP_CODES.OK,
       data,
-    });
+    })
   } catch (error) {
-    next(error);
+    next(error)
   }
-};
+}
 
-module.exports = getAll;
+module.exports = getAll
