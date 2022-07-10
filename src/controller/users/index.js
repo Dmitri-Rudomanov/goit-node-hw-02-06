@@ -1,7 +1,17 @@
-const signup = require('./signup')
-const login = require('./login')
-const logout = require('./logout')
-const current = require('./current')
-const subscription = require('./subscription')
+const signupUser = require('./signupUser')
+const loginUser = require('./loginUser')
+const logoutUser = require('./logoutUser')
+const getCurrentUser = require('./getCurrentUser')
+const updateUserSubscription = require('./updateUserSubscription')
+const updateUserAvatar = require('./updateUserAvatar')
+const updateCloudUserAvatar = require('./updateCloudUserAvatar')
 
-module.exports = { signup, login, logout, current, subscription }
+module.exports = {
+  signupUser,
+  loginUser,
+  logoutUser,
+  getCurrentUser,
+  updateUserSubscription,
+  updateUserAvatar,
+  updateCloudUserAvatar,
+}

@@ -1,6 +1,6 @@
-const model = require('./../../schemas/contacts.js')
+const model = require('../../model/contacts.js')
 
-const listContacts = async (
+const getContacts = async (
   userId,
   { limit = 5, offset = 0, sortBy, sortByDesc, filter, favorite },
 ) => {
@@ -27,4 +27,4 @@ const listContacts = async (
   }
 }
 
-module.exports = listContacts
+module.exports = getContacts

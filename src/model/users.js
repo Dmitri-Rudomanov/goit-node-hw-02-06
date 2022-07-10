@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 const { Schema } = require('mongoose')
 const bcrypt = require('bcryptjs')
+const gravatar = require('gravatar')
 
-const { SUBSCRIPTION_TYPE } = require('./../helpers/constants')
+const { SUBSCRIPTION_TYPE } = require('../helpers/constants')
 const SALT_FACTOR = 8
 
 const userSchema = new Schema(
@@ -30,6 +31,16 @@ const userSchema = new Schema(
       default: SUBSCRIPTION_TYPE.STARTER,
     },
     token: {
+      type: String,
+      default: null,
+    },
+    avatarURL: {
+      type: String,
+      default: function () {
+        return gravatar.url(this.email, { s: '250' }, true)
+      },
+    },
+    avatarCloudId: {
       type: String,
       default: null,
     },

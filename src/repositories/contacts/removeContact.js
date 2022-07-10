@@ -1,4 +1,4 @@
-const model = require('./../../schemas/contacts.js')
+const model = require('../../model/contacts.js')
 
 const removeContact = async (userId, contactId) => {
   try {

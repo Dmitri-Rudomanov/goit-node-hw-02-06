@@ -1,6 +1,6 @@
-const model = require('../../schemas/contacts.js')
+const model = require('../../model/contacts.js')
 
-const updateContactsStatus = async (userId, contactId, body) => {
+const updateStatusContact = async (userId, contactId, body) => {
   try {
     const data = await model.findByIdAndUpdate(
       { _id: contactId, owner: userId },
@@ -16,4 +16,4 @@ const updateContactsStatus = async (userId, contactId, body) => {
   }
 }
 
-module.exports = updateContactsStatus
+module.exports = updateStatusContact

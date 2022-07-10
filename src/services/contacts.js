@@ -5,14 +5,14 @@ class ContactServices {
     this.repositories = { contacts: contactsRepository }
   }
 
-  async listContacts(userId, query) {
+  async getContacts(userId, query) {
     try {
       const {
         docs: contacts,
         totalDocs: total,
         limit,
         offset,
-      } = await this.repositories.contacts.listContacts(userId, query)
+      } = await this.repositories.contacts.getContacts(userId, query)
       return { contacts, total, limit, offset }
     } catch (error) {
       console.error(error)
@@ -70,9 +70,9 @@ class ContactServices {
     }
   }
 
-  async updateContactsStatus(userId, contactId, { favorite }) {
+  async updateContactFavorite(userId, contactId, { favorite }) {
     try {
-      const data = await this.repositories.contacts.updateContactsStatus(
+      const data = await this.repositories.contacts.updateContactFavorite(
         userId,
         contactId,
         { favorite },
