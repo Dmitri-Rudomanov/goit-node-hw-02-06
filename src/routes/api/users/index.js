@@ -36,10 +36,10 @@ router
     [guard, upload.single('file')],
     usersController.updateUserAvatar,
   )
-  .patch(
-    '/avatars/cloud',
-    [guard, upload.single('file')],
-    usersController.updateCloudUserAvatar,
-  )
+  // .patch(
+  //   '/avatars/cloud',
+  //   [guard, upload.single('file')],
+  //   usersController.updateCloudUserAvatar,
+  // )
 
 module.exports = router
