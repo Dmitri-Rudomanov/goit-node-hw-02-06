@@ -1,6 +1,6 @@
-const User = require('../../schemas/users.js')
+const User = require('../../model/users.js')
 
-const createUser = async body => {
+const signupUser = async body => {
   try {
     const user = new User(body)
     return await user.save()
@@ -10,4 +10,4 @@ const createUser = async body => {
   }
 }
 
-module.exports = createUser
+module.exports = signupUser

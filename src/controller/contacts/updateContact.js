@@ -2,22 +2,23 @@ const { HTTP_CODES, STATUS } = require('../../helpers/constants.js')
 
 const { contactServices } = require('../../services')
 
-const remove = async (req, res, next) => {
+const updateContact = async (req, res, next) => {
   try {
+    const {
+      params: { contactId },
+      body,
+    } = req
     const userId = req.user.id
-    const data = await contactServices.removeContact(
-      userId,
-      req.params.contactId,
-    )
-    data
+    const data = await contactServices.updateContact(userId, contactId, body)
+    return data
       ? res.status(HTTP_CODES.OK).json({
         status: STATUS.SUCCESS,
         code: HTTP_CODES.OK,
-        message: 'contact deleted',
+        data,
       })
       : next({
         status: HTTP_CODES.NOT_FOUND,
-        code: HTTP_CODES.ERROR,
+        code: HTTP_CODES.NOT_FOUND,
         message: 'Not found',
       })
   } catch (error) {
@@ -25,4 +26,4 @@ const remove = async (req, res, next) => {
   }
 }
 
-module.exports = remove
+module.exports = updateContact

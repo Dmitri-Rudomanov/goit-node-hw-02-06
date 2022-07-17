@@ -1,7 +1,7 @@
 const rateLimit = require('express-rate-limit')
 const { HTTP_CODES, STATUS } = require('./constants')
 
-const { request } = require('./../config/limits.json')
+const { request } = require('../config/limits.json')
 
 const appLimiter = rateLimit({
   windowMs: request.range,

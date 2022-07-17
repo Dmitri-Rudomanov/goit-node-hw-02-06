@@ -1,20 +1,25 @@
 const { HTTP_CODES, STATUS } = require('../../helpers/constants.js')
 
-const { userServices } = require('../../services')
+const { authServices, userServices } = require('../../services')
 
-const current = async (req, res, next) => {
+const loginUser = async (req, res, next) => {
   try {
-    const userID = req.user.id
-    const user = await userServices.findUserById(userID)
-
-    if (user) {
+    const { password, email } = req.body
+    const token = await authServices.loginUser({
+      password,
+      email,
+    })
+    if (token) {
+      const user = await userServices.findUserByEmail(email)
       return res.status(HTTP_CODES.OK).json({
         status: STATUS.SUCCESS,
         code: HTTP_CODES.OK,
         data: {
+          token,
           user: {
             email: user.email,
             subscription: user.subscription,
+            avatarURL: user.avatarURL,
           },
         },
       })
@@ -22,11 +27,11 @@ const current = async (req, res, next) => {
     next({
       status: HTTP_CODES.UNAUTHORIZED,
       code: HTTP_CODES.UNAUTHORIZED,
-      message: 'Not authorized',
+      message: 'Email or password is wrong',
     })
   } catch (error) {
     next(error)
   }
 }
 
-module.exports = current
+module.exports = loginUser

@@ -1,4 +1,4 @@
-const model = require('../../schemas/users.js')
+const model = require('../../model/users.js')
 
 const updateUserSubscription = async (userId, body) => {
   try {

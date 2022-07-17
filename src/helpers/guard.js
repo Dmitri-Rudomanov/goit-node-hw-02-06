@@ -1,6 +1,6 @@
 const passport = require('passport')
 
-require('./../config/passport')
+require('../config/passport')
 const { HTTP_CODES } = require('./constants')
 
 const guard = (req, res, next) => {
