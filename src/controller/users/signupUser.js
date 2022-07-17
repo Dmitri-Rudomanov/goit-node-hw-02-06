@@ -4,7 +4,7 @@ const { userServices } = require('../../services')
 
 const signupUser = async (req, res, next) => {
   try {
-    const { password, email, subscription } = req.body
+    const { password, email, subscription, name = 'Guest' } = req.body
     const user = await userServices.findUserByEmail(email)
     if (user) {
       return next({
@@ -18,6 +18,7 @@ const signupUser = async (req, res, next) => {
       password,
       email,
       subscription,
+      name,
     })
     return res.status(HTTP_CODES.CREATED).json({
       status: STATUS.SUCCESS,

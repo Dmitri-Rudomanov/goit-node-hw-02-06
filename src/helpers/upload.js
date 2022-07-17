@@ -20,7 +20,11 @@ function fileFilter(req, file, next) {
   }
 
   next(null, false)
-
+  // next({
+  //   status: HTTP_CODES.BAD_REQUEST,
+  //   code: HTTP_CODES.BAD_REQUEST,
+  //   message: 'missing field favorite',
+  // })
 }
 
 const storage = multer.diskStorage({
@@ -31,7 +35,7 @@ const storage = multer.diskStorage({
 const upload = multer({
   fileFilter,
   storage: storage,
-  limits: { fileSize: 5_000_000 },
+  limits: { fileSize: 2_000_000 },
 })
 
 module.exports = upload

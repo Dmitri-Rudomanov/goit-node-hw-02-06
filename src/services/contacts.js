@@ -35,11 +35,7 @@ class ContactServices {
 
   async removeContact(userId, contactId) {
     try {
-      const data = await this.repositories.contacts.removeContact(
-        userId,
-        contactId,
-      )
-      return data
+      return await this.repositories.contacts.removeContact(userId, contactId)
     } catch (error) {
       console.error(error)
       throw error
@@ -48,8 +44,7 @@ class ContactServices {
 
   async addContact(userId, body) {
     try {
-      const data = await this.repositories.contacts.addContact(userId, body)
-      return data
+      return await this.repositories.contacts.addContact(userId, body)
     } catch (error) {
       console.error(error)
       throw error
@@ -58,12 +53,11 @@ class ContactServices {
 
   async updateContact(userId, contactId, body) {
     try {
-      const data = await this.repositories.contacts.updateContact(
+      return await this.repositories.contacts.updateContact(
         userId,
         contactId,
         body,
       )
-      return data
     } catch (error) {
       console.error(error)
       throw error
@@ -72,12 +66,11 @@ class ContactServices {
 
   async updateContactFavorite(userId, contactId, { favorite }) {
     try {
-      const data = await this.repositories.contacts.updateContactFavorite(
+      return await this.repositories.contacts.updateContactFavorite(
         userId,
         contactId,
         { favorite },
       )
-      return data
     } catch (error) {
       console.error(error)
       throw error
