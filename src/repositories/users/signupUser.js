@@ -1,8 +1,8 @@
 const User = require('../../model/users.js')
 
-const signupUser = async body => {
+const signupUser = async (body, verifyToken) => {
   try {
-    const user = new User(body)
+    const user = new User({ ...body, verifyToken })
     return await user.save()
   } catch (error) {
     console.error(error)

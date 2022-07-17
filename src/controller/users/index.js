@@ -5,6 +5,8 @@ const getCurrentUser = require('./getCurrentUser')
 const updateUserSubscription = require('./updateUserSubscription')
 const updateUserAvatar = require('./updateUserAvatar')
 const updateCloudUserAvatar = require('./updateCloudUserAvatar')
+const verifyUser = require('./verifyUser')
+const verifyUserOneMoreTime = require('./verifyUserOneMoreTime')
 
 module.exports = {
   signupUser,
@@ -13,5 +15,7 @@ module.exports = {
   getCurrentUser,
   updateUserSubscription,
   updateUserAvatar,
+  verifyUser,
+  verifyUserOneMoreTime,
   updateCloudUserAvatar,
 }

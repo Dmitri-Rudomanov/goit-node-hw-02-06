@@ -17,8 +17,9 @@ switch (process.env.NODE_ENV) {
 }
 const db = mongoose.connect(uriDb, {
   useUnifiedTopology: true,
+  useCreateIndex: true,
   useNewUrlParser: true,
-
+  useFindAndModify: false,
 })
 
 if (process.env.NODE_ENV !== 'test') {

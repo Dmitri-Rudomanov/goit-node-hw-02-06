@@ -1,15 +1,15 @@
 {
   "request": {
-    "range": 60000,
+    "range": 60,
     "count": 100
   },
   "login": {
-    "range": 3600000,
+    "range": 360,
     "count": 5
   },
   "signup": {
-    "range": 3600000,
+    "range": 360,
     "count": 2
   },
-  "json": { "limit": 10000 }
+  "json": { "limit": 1000000 }
 }

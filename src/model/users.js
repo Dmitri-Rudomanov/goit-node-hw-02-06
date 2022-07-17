@@ -8,6 +8,10 @@ const SALT_FACTOR = 8
 
 const userSchema = new Schema(
   {
+    name: {
+      type: String,
+      default: 'Guest',
+    },
     password: {
       type: String,
       required: [true, 'Password is required'],
@@ -43,6 +47,14 @@ const userSchema = new Schema(
     avatarCloudId: {
       type: String,
       default: null,
+    },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verifyToken: {
+      type: String,
+      required: [true, 'Verify token is required'],
     },
   },
   { versionKey: false, timestamps: true },
